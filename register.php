@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once('db-connect.php');
 require_once('header.php'); // Pastikan header.php tidak memiliki output
 
