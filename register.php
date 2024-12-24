@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once('header.php'); ?>
 <?php
 require_once('db-connect.php');
+require_once('header.php'); // Pastikan header.php tidak memiliki output
 
 $error = "";
 $success = "";
@@ -31,14 +29,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($stmt->execute()) {
             $success = "Registration successful! Redirecting to login...";
-            header("Refresh: 2; URL=login.php");
-            exit;
+            header("Location: login.php"); // Panggil header sebelum ada output
+            exit; // Pastikan script berhenti
         } else {
             $error = "Registration failed. Please try again.";
         }
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
 <body>
     <h1 id="page-title" class="text-center">Register Page</h1>
     <hr id="title_hr" class="mx-auto">
